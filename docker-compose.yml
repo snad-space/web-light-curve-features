@@ -1,0 +1,18 @@
+version: '2'
+services:
+   web:
+     build: .
+     networks:
+       - proxy
+     environment:
+       VIRTUAL_HOST: features.lc.snad.space
+       HTTPS_METHOD: noredirect
+       DYNDNS_HOST: features.lc.snad.space
+       LETSENCRYPT_HOST: features.lc.snad.space
+       LETSENCRYPT_EMAIL: features.lc.snad.space@homb.it
+     restart: always
+
+networks:
+  proxy:
+    external:
+      name: proxy

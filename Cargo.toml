@@ -1,0 +1,16 @@
+[package]
+name = "web-feature"
+version = "0.1.0"
+authors = ["Konstantin Malanchev <hombit@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+light-curve-feature = "0.1.5"
+rocket = "0.4.2"
+serde = { version = "1.0", features = ["derive"] }
+unzip3 = "1.0"
+
+[dependencies.rocket_contrib]
+version = "0.4.2"
+default-features = false
+features = ["json"]
