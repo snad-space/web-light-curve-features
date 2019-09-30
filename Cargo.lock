@@ -256,7 +256,7 @@ dependencies = [
 
 [[package]]
 name = "light-curve-feature"
-version = "0.1.5"
+version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "conv 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -702,7 +702,7 @@ dependencies = [
 name = "web-feature"
 version = "0.1.0"
 dependencies = [
- "light-curve-feature 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
+ "light-curve-feature 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket_contrib 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.101 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -799,7 +799,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum lazycell 1.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "b294d6fa9ee409a054354afc4352b0b9ef7ca222c69b8812cbea9e7d2bf3783f"
 "checksum libc 0.2.62 (registry+https://github.com/rust-lang/crates.io-index)" = "34fcd2c08d2f832f376f4173a231990fa5aef4e99fb569867318a227ef4c06ba"
 "checksum light-curve-common 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "6f0e40a106910687115ee14db19340b88a6622366419c316a9b4ee8cb367c133"
-"checksum light-curve-feature 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "201f6cd1602ca2bd0498c73e1441a4039b5d99d2aa0d70a29f28b7d70bc77385"
+"checksum light-curve-feature 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)" = "e1f0b5194b5eed7feaafe71199e438c5dc831019d3d24c82335b76b812b039b1"
 "checksum log 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)" = "e19e8d5c34a3e0e2223db8e060f9e8264aeeb5c5fc64a4ee9965c062211c024b"
 "checksum log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)" = "14b6052be84e6b71ab17edffc2eeabf5c2c3ae1fdb464aae35ac50c67a44e1f7"
 "checksum matches 0.1.8 (registry+https://github.com/rust-lang/crates.io-index)" = "7ffc5c5338469d4d3ea17d269fa8ea3512ad247247c30bd2df69e68309ed0a08"
