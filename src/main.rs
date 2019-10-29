@@ -88,7 +88,10 @@ fn index(mut data: Json<Data>) -> Result<Json<FeatureValues>, status::BadRequest
 }
 
 fn main() {
+    let version = env!("CARGO_PKG_VERSION");
+    let path = format!("/api/v{}/", version);
     rocket::ignite()
         .mount("/", routes![index])
+        .mount(&path, routes![index])
         .launch();
 }

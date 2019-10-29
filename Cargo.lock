@@ -700,7 +700,7 @@ dependencies = [
 
 [[package]]
 name = "web-feature"
-version = "0.1.0"
+version = "0.1.7"
 dependencies = [
  "light-curve-feature 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",
