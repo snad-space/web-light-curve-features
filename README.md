@@ -7,7 +7,7 @@ import requests
 
 
 # API version can differ, HTTPS is also availible
-URL = 'http://features.lc.snad.space/api/v0.1.7'
+API_URL = 'http://features.lc.snad.space/api/v0.1.7'
 
 def main():
     n = 100
