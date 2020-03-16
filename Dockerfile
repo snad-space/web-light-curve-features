@@ -1,6 +1,6 @@
-FROM debian:stretch AS build
+FROM debian:buster AS build
 
-ARG TOOLCHAIN=nightly-2019-09-28
+ARG TOOLCHAIN=nightly-2020-02-18
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl ca-certificates gcc libc-dev \
@@ -16,7 +16,7 @@ WORKDIR /app
 RUN $HOME/.cargo/bin/cargo build --release
 
 ###################
-FROM debian:stretch
+FROM debian:buster
 
 COPY --from=build /app/target/release/web-feature /app
 

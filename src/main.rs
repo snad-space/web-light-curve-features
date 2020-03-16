@@ -24,6 +24,7 @@ struct Observation {
 
 fn get_fe() -> FeatureExtractor<f64> {
     let mut periodogram_feature_evaluator = Periodogram::new(3);
+    periodogram_feature_evaluator.set_nyquist(Box::new(QuantileNyquistFreq { quantile: 0.1 }));
     periodogram_feature_evaluator.add_features(vec![
         Box::new(Amplitude::default()),
         Box::new(BeyondNStd::default()),
