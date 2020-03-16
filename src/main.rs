@@ -4,7 +4,7 @@
 extern crate rocket;
 
 use light_curve_feature::*;
-use rocket::response::status;
+use rocket::response::{Redirect, status};
 use rocket_contrib::json::Json;
 use serde::Deserialize;
 use std::collections::HashMap;
@@ -88,11 +88,16 @@ fn index(mut data: Json<Data>) -> Result<Json<FeatureValues>, status::BadRequest
     Ok(Json(features))
 }
 
+#[get("/help")]
+fn help() -> Redirect {
+    Redirect::to("https://github.com/hombit/web-light-curve-features")
+}
+
 fn main() {
     let version = env!("CARGO_PKG_VERSION");
-    let path = format!("/api/v{}/", version);
+    let index_path = format!("/api/v{}/", version);
     rocket::ignite()
-        .mount("/", routes![index])
-        .mount(&path, routes![index])
+        .mount("/", routes![index, help])
+        .mount(&index_path, routes![index, help])
         .launch();
 }
