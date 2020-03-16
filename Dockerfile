@@ -22,6 +22,7 @@ COPY --from=build /app/target/release/web-feature /app
 
 ENV ROCKET_ENV=prod
 ENV ROCKET_PORT=80
+ENV ROCKET_LOG=normal
 EXPOSE 80
 
 ENTRYPOINT ["/app"]
