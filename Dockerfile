@@ -16,7 +16,7 @@ WORKDIR /app
 RUN $HOME/.cargo/bin/cargo build --release
 
 ###################
-FROM debian:buster
+FROM debian:buster-slim
 
 COPY --from=build /app/target/release/web-feature /app
 
