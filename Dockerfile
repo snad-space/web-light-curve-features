@@ -1,6 +1,6 @@
 FROM debian:buster AS build
 
-ARG TOOLCHAIN=nightly-2020-02-18
+ARG TOOLCHAIN=nightly-2020-04-30
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl ca-certificates gcc libc-dev \
