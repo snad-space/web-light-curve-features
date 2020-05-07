@@ -4,6 +4,9 @@ version = "0.1.10"
 authors = ["Konstantin Malanchev <hombit@gmail.com>"]
 edition = "2018"
 
+[profile.release]
+lto = true
+
 [dependencies]
 light-curve-feature = "0.1.10"
 rocket = "0.4.4"
