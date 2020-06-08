@@ -1,6 +1,6 @@
 [package]
 name = "web-feature"
-version = "0.1.12"
+version = "0.1.13"
 authors = ["Konstantin Malanchev <hombit@gmail.com>"]
 edition = "2018"
 
@@ -13,7 +13,7 @@ rocket = "^0.4.5"
 unzip3 = "1"
 
 [dependencies.light-curve-feature]
-version = "0.1.12"
+version = "0.1.13"
 default-features = false
 features = ["fftw-source"]
 
