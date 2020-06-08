@@ -23,8 +23,8 @@ struct Observation {
 }
 
 fn get_fe() -> FeatureExtractor<f64> {
-    let mut periodogram_feature_evaluator = Periodogram::new(3);
-    periodogram_feature_evaluator.set_nyquist(Box::new(QuantileNyquistFreq { quantile: 0.1 }));
+    let mut periodogram_feature_evaluator = Periodogram::new(5);
+    periodogram_feature_evaluator.set_nyquist(Box::new(QuantileNyquistFreq { quantile: 0.05 }));
     periodogram_feature_evaluator.add_features(vec![
         Box::new(Amplitude::default()),
         Box::new(BeyondNStd::default()),
@@ -70,7 +70,7 @@ fn index(mut data: Json<Data>) -> Result<Json<FeatureValues>, status::BadRequest
         )));
     }
     data.light_curve
-        .sort_by(|a, b| a.t.partial_cmp(&b.t).unwrap());
+        .sort_unstable_by(|a, b| a.t.partial_cmp(&b.t).unwrap());
     let (t, m, err2): (Vec<_>, Vec<_>, Vec<_>) = data
         .light_curve
         .iter()
