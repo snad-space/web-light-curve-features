@@ -2086,8 +2086,9 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "web-feature"
-version = "0.1.10"
+version = "0.1.12"
 dependencies = [
+ "lazy_static 1.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "light-curve-feature 0.1.12 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket_contrib 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)",

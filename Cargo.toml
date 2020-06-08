@@ -8,6 +8,7 @@ edition = "2018"
 lto = true
 
 [dependencies]
+lazy_static = "^1.4.0"
 rocket = "^0.4.5"
 unzip3 = "1"
 
