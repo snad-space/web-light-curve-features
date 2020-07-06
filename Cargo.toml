@@ -14,7 +14,7 @@ rocket = "^0.4.5"
 unzip3 = "1"
 
 [dependencies.light-curve-feature]
-version = "0.1.16"
+version = "0.1.17"
 default-features = false
 features = ["fftw-source"]
 
