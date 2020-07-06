@@ -25,16 +25,40 @@ struct Observation {
     err: f64,
 }
 
+struct TruncMedianNyquistFreq {
+    m: MedianNyquistFreq,
+    max_freq: f64,
+}
+
+impl TruncMedianNyquistFreq {
+    fn new(min_dt: f64) -> Self {
+        Self {
+            m: MedianNyquistFreq,
+            max_freq: std::f64::consts::PI / min_dt,
+        }
+    }
+}
+
+impl NyquistFreq<f64> for TruncMedianNyquistFreq {
+    fn nyquist_freq(&self, t: &[f64]) -> f64 {
+        f64::min(self.m.nyquist_freq(t), self.max_freq)
+    }
+}
+
 lazy_static! {
     static ref FE: FeatureExtractor<f64> = {
-        let mut periodogram_feature_evaluator = Periodogram::new(5);
-        periodogram_feature_evaluator.set_nyquist(Box::new(QuantileNyquistFreq { quantile: 0.05 }));
+        let mut periodogram_feature_evaluator = Periodogram::new(3);
+        periodogram_feature_evaluator.set_nyquist(Box::new(TruncMedianNyquistFreq::new(
+            300.0 / 86400.0,
+        )));
+        periodogram_feature_evaluator.set_max_freq_factor(2.0);
         periodogram_feature_evaluator.add_features(vec![
             Box::new(Amplitude::default()),
             Box::new(BeyondNStd::default()),
             Box::new(BeyondNStd::new(2.0)),
             Box::new(Cusum::default()),
             Box::new(Eta::default()),
+            Box::new(InterPercentileRange::default()),
             Box::new(StandardDeviation::default()),
             Box::new(PercentAmplitude::default()),
         ]);
@@ -45,12 +69,15 @@ lazy_static! {
             Cusum::default(),
             Eta::default(),
             EtaE::default(),
+            InterPercentileRange::default(),
+            InterPercentileRange::new(0.1),
             Kurtosis::default(),
             LinearFit::default(),
             LinearTrend::default(),
             MagnitudePercentageRatio::new(0.4, 0.05), // default
             MagnitudePercentageRatio::new(0.2, 0.1),
             MaximumSlope::default(),
+            Mean::default(),
             MedianAbsoluteDeviation::default(),
             MedianBufferRangePercentage::new(0.05), // not default
             PercentAmplitude::default(),
@@ -61,6 +88,7 @@ lazy_static! {
             Skew::default(),
             StandardDeviation::default(),
             StetsonK::default(),
+            WeightedMean::default(),
         )
     };
 }
