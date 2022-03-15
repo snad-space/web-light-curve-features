@@ -17,6 +17,7 @@ FROM debian:buster-slim
 COPY --from=build /app/target/release/web-feature /app
 
 ENV ROCKET_PROFILE=prod
+ENV ROCKET_ADDRESS=0.0.0.0
 ENV ROCKET_PORT=80
 ENV ROCKET_LOG_LEVEL=normal
 EXPOSE 80
