@@ -10,6 +10,7 @@ codegen-units = 1
 
 [dependencies]
 lazy_static = "^1.4.0"
+ndarray = "0.15.4"
 unzip3 = "1"
 
 [dependencies.light-curve-feature-0-1-17]
@@ -21,6 +22,12 @@ features = ["fftw-source"]
 [dependencies.light-curve-feature-0-2-2]
 package = "light-curve-feature"
 version = "=0.2.2"
+default-features = false
+features = ["fftw-source"]
+
+[dependencies.light-curve-feature-0-4-1]
+package = "light-curve-feature"
+version = "=0.4.1"
 default-features = false
 features = ["fftw-source"]
 

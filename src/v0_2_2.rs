@@ -98,12 +98,11 @@ pub fn index(mut data: Json<Data>) -> Result<Json<FeatureValues>, BadRequest<Str
     data.light_curve
         .sort_unstable_by(|a, b| a.t.partial_cmp(&b.t).unwrap());
 
-    let (t, mag, err2): (Vec<_>, Vec<_>, Vec<_>) = data
+    let (t, mag, mag_weight): (Vec<_>, Vec<_>, Vec<_>) = data
         .light_curve
         .iter()
-        .map(|obs| (obs.t, obs.m, obs.err.powi(2)))
+        .map(|obs| (obs.t, obs.m, obs.err.powi(-2)))
         .unzip3();
-    let mag_weight: Vec<_> = err2.iter().copied().map(f64::recip).collect();
     let flux: Vec<_> = mag.iter().map(|&m| 10_f64.powf(-0.4 * m)).collect();
     let flux_weight: Vec<_> = flux
         .iter()
