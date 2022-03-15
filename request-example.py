@@ -7,7 +7,7 @@ from random import random
 import requests
 
 
-API_URL = 'http://127.0.0.1:8000/api/v0.2.2/'
+API_URL = 'http://features.lc.snad.space/'
 if len(sys.argv) > 1:
     API_URL = sys.argv[1]
 
