@@ -1,3 +1,5 @@
+#[cfg(test)]
+mod tests;
 mod v0_1_17;
 mod v0_2_2;
 mod v0_4_1;
