@@ -8,7 +8,6 @@ import requests
 
 
 API_URL = 'http://features.lc.snad.space/'
-API_URL = 'http://localhost:8000/'
 if len(sys.argv) > 1:
     API_URL = sys.argv[1]
 
