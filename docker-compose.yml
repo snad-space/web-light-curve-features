@@ -9,7 +9,7 @@ services:
        HTTPS_METHOD: noredirect
        DYNDNS_HOST: features.lc.snad.space
        LETSENCRYPT_HOST: features.lc.snad.space
-       LETSENCRYPT_EMAIL: features.lc.snad.space@homb.it
+       LETSENCRYPT_EMAIL: letsencrypt@snad.space
      restart: always
 
 networks:
