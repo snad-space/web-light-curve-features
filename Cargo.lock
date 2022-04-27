@@ -2207,7 +2207,7 @@ checksum = "3d958d035c4438e28c70e4321a2911302f10135ce78a9c7834c0cab4123d06a2"
 
 [[package]]
 name = "web-feature"
-version = "0.3.0"
+version = "0.3.1"
 dependencies = [
  "lazy_static 1.4.0",
  "light-curve-feature 0.1.17",

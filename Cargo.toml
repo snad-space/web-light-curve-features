@@ -1,6 +1,6 @@
 [package]
 name = "web-feature"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["Konstantin Malanchev <hombit@gmail.com>"]
 edition = "2018"
 

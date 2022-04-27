@@ -19,7 +19,7 @@ struct Observation {
 thread_local! {
     static MAG_FE: FeatureExtractor<f64, Feature<f64>> = {
         let mut periodogram_feature_evaluator = Periodogram::new(5);
-        periodogram_feature_evaluator.set_nyquist(AverageNyquistFreq.into());
+        periodogram_feature_evaluator.set_nyquist(MedianNyquistFreq.into());
         periodogram_feature_evaluator.set_freq_resolution(10.0);
         periodogram_feature_evaluator.set_max_freq_factor(2.0);
         periodogram_feature_evaluator.add_feature(Amplitude::default().into());
