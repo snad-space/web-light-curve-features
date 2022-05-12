@@ -25,9 +25,9 @@ version = "=0.2.2"
 default-features = false
 features = ["fftw-source"]
 
-[dependencies.light-curve-feature-0-4-1]
+[dependencies.light-curve-feature-0-4-3]
 package = "light-curve-feature"
-version = "=0.4.1"
+version = "=0.4.3"
 default-features = false
 features = ["fftw-source"]
 
