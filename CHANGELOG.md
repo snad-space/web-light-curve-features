@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [2022.5.1] 2022 May 12
 
 ### `light-curve-feature` v0.4.1 -> v0.4.3
 
