@@ -4,6 +4,7 @@
 
 ### General
 
+- `/versions` doesn't show patch-version paths anymore, because we are not allowed to use different patch-versions of the same package in Cargo.toml
 - `rocket` 0.5.0-rc.1 -> 0.5.0-rc.2 
 
 ### `light-curve-feature` v0.4.1 -> v0.4.3
