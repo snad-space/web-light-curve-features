@@ -1,5 +1,5 @@
 use lazy_static::lazy_static;
-use light_curve_feature_0_1_17::*;
+use light_curve_feature_0_1::*;
 use rocket::response::status::BadRequest;
 use rocket::serde::{json::Json, Deserialize};
 use std::collections::HashMap;

@@ -27,7 +27,7 @@ fn rocket() -> _ {
         .mount("/api/v0.1/", routes![v0_1::index])
         .mount("/api/v0.2.2/", routes![v0_2::index])
         .mount("/api/v0.2/", routes![v0_2::index])
-        .mount("/api/v0.4.3/", routes![v0_4::index])
+        .mount("/api/v0.4.5/", routes![v0_4::index])
         .mount("/api/v0.4/", routes![v0_4::index])
         .mount("/api/latest/", routes![v0_4::index])
 }

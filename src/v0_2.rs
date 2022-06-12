@@ -1,4 +1,4 @@
-use light_curve_feature_0_2_2::*;
+use light_curve_feature_0_2::*;
 use rocket::response::status::BadRequest;
 use rocket::serde::{json::Json, Deserialize};
 use std::collections::HashMap;

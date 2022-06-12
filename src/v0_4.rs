@@ -1,4 +1,4 @@
-use light_curve_feature_0_4_3::*;
+use light_curve_feature_0_4::*;
 use ndarray::{Array1, Zip};
 use rocket::response::status::BadRequest;
 use rocket::serde::{json::Json, Deserialize};
