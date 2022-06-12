@@ -1,5 +1,9 @@
 # Changelog
 
+## [2022.6.0] 2022 June 12
+
+### `light-curve-feature` v0.4.3 -> v0.4.5
+
 ## [2022.5.1] 2022 May 12
 
 ### `light-curve-feature` v0.4.1 -> v0.4.3
