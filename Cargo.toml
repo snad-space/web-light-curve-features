@@ -10,7 +10,7 @@ codegen-units = 1
 
 [dependencies]
 lazy_static = "^1.4.0"
-ndarray = "0.15.4"
+ndarray = "0.15.6"
 unzip3 = "1"
 
 [dependencies.light-curve-feature-0-1]
