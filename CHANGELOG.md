@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### General
+
+- `ndarray` 0.15.4 -> 0.15.6
+
 ## [2022.6.0] 2022 June 12
 
 ### `light-curve-feature` v0.4.3 -> v0.4.5
