@@ -1,4 +1,4 @@
-FROM rust:1.59.0-slim-buster AS build
+FROM rust:1.68.0-slim-buster AS build
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends libssl-dev curl ca-certificates build-essential gfortran pkg-config \
