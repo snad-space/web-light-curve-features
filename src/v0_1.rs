@@ -45,14 +45,14 @@ lazy_static! {
         )));
         periodogram_feature_evaluator.set_max_freq_factor(2.0);
         periodogram_feature_evaluator.add_features(vec![
-            Box::new(Amplitude::default()),
-            Box::new(BeyondNStd::default()),
+            Box::<Amplitude>::default(),
+            Box::<BeyondNStd<f64>>::default(),
             Box::new(BeyondNStd::new(2.0)),
-            Box::new(Cusum::default()),
-            Box::new(Eta::default()),
-            Box::new(InterPercentileRange::default()),
-            Box::new(StandardDeviation::default()),
-            Box::new(PercentAmplitude::default()),
+            Box::<Cusum>::default(),
+            Box::<Eta>::default(),
+            Box::<InterPercentileRange>::default(),
+            Box::<StandardDeviation>::default(),
+            Box::<PercentAmplitude>::default(),
         ]);
         feat_extr!(
             Amplitude::default(),
