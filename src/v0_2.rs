@@ -22,10 +22,10 @@ thread_local! {
         periodogram_feature_evaluator.set_nyquist(Box::new(AverageNyquistFreq));
         periodogram_feature_evaluator.set_freq_resolution(10.0);
         periodogram_feature_evaluator.set_max_freq_factor(2.0);
-        periodogram_feature_evaluator.add_feature(Box::new(Amplitude::default()));
+        periodogram_feature_evaluator.add_feature(Box::<Amplitude>::default());
         periodogram_feature_evaluator.add_feature(Box::new(BeyondNStd::new(2.0)));
         periodogram_feature_evaluator.add_feature(Box::new(BeyondNStd::new(3.0)));
-        periodogram_feature_evaluator.add_feature(Box::new(StandardDeviation::default()));
+        periodogram_feature_evaluator.add_feature(Box::<StandardDeviation>::default());
 
         feat_extr!(
             Amplitude::default(),
