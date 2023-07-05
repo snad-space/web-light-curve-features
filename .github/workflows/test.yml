@@ -9,6 +9,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libunwind-dev
+          sudo apt-get install -y libceres-dev libfftw3-dev libgsl-dev
       - run: cargo check --all-targets
       - run: cargo test
       - run: cargo fmt -- --check
