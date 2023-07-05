@@ -195,8 +195,10 @@ thread_local! {
 
 type FeatureValues = HashMap<String, f64>;
 
-fn data_to_time_series(mut data: Data) -> Result<TimeSeries<'static, f64>, BadRequest<String>> {
-    let n_obs = data.light_curve.len();
+fn data_to_time_series(
+    mut data: Vec<Observation>,
+) -> Result<TimeSeries<'static, f64>, BadRequest<String>> {
+    let n_obs = data.len();
 
     if n_obs < 5 {
         return Err(BadRequest(Some(
@@ -204,14 +206,13 @@ fn data_to_time_series(mut data: Data) -> Result<TimeSeries<'static, f64>, BadRe
         )));
     }
 
-    data.light_curve
-        .sort_unstable_by(|a, b| a.t.partial_cmp(&b.t).unwrap());
+    data.sort_unstable_by(|a, b| a.t.partial_cmp(&b.t).unwrap());
 
     let (time, mag, mag_weight) = {
         let mut t = Array1::zeros(n_obs);
         let mut mag = Array1::zeros(n_obs);
         let mut mag_weight = Array1::zeros(n_obs);
-        Zip::from(&data.light_curve)
+        Zip::from(&data)
             .and(&mut t)
             .and(&mut mag)
             .and(&mut mag_weight)
@@ -240,9 +241,9 @@ fn flux_ts_from_mag_ts<'a>(mag_ts: &'a TimeSeries<'_, f64>, zp: f64) -> TimeSeri
     TimeSeries::new(mag_ts.t.sample.view(), flux, flux_weight)
 }
 
-#[post("/", format = "json", data = "<data>")]
+#[post("/", format = "application/json", data = "<data>")]
 pub fn index(data: Json<Data>) -> Result<Json<FeatureValues>, BadRequest<String>> {
-    let mut mag_ts = data_to_time_series(data.0)?;
+    let mut mag_ts = data_to_time_series(data.0.light_curve)?;
     let mag_values = MAG_FE
         .with(|fe| fe.eval(&mut mag_ts))
         .map_err(|e| BadRequest(Some(format!("Bad request: {:?}", e))))?;
@@ -256,5 +257,35 @@ pub fn index(data: Json<Data>) -> Result<Json<FeatureValues>, BadRequest<String>
 
     let features: FeatureValues =
         FEATURE_NAMES.with(|names| names.iter().cloned().zip(values.into_iter()).collect());
+    Ok(Json(features))
+}
+
+#[derive(Debug, Deserialize)]
+pub struct DataAndFeatures {
+    light_curve: Vec<Observation>,
+    extractor: Feature<f64>,
+}
+
+#[post("/features", format = "application/json", data = "<data_and_features>")]
+pub fn features(
+    data_and_features: Json<DataAndFeatures>,
+) -> Result<Json<FeatureValues>, BadRequest<String>> {
+    let DataAndFeatures {
+        light_curve: data,
+        extractor,
+    } = data_and_features.0;
+
+    let mut ts = data_to_time_series(data)?;
+    let values = extractor
+        .eval(&mut ts)
+        .map_err(|e| BadRequest(Some(format!("Bad request: {:?}", e))))?;
+
+    let features: FeatureValues = extractor
+        .get_names()
+        .iter()
+        .cloned()
+        .map(Into::into)
+        .zip(values.into_iter())
+        .collect();
     Ok(Json(features))
 }

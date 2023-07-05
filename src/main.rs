@@ -23,6 +23,7 @@ fn versions() -> Json<&'static [&'static str]> {
 #[launch]
 fn rocket() -> _ {
     rocket::build()
+        // Pre-defined features
         .mount("/", routes![v0_1::index, help, versions])
         .mount("/api/v0.1.17/", routes![v0_1::index])
         .mount("/api/v0.1/", routes![v0_1::index])
@@ -30,7 +31,7 @@ fn rocket() -> _ {
         .mount("/api/v0.2/", routes![v0_2::index])
         .mount("/api/v0.4.5/", routes![v0_4::index])
         .mount("/api/v0.4/", routes![v0_4::index])
-        .mount("/api/v0.5.5/", routes![v0_5::index])
-        .mount("/api/v0.5/", routes![v0_5::index])
-        .mount("/api/latest/", routes![v0_5::index])
+        .mount("/api/v0.5.5/", routes![v0_5::index, v0_5::features])
+        .mount("/api/v0.5/", routes![v0_5::index, v0_5::features])
+        .mount("/api/latest/", routes![v0_5::index, v0_5::features])
 }
