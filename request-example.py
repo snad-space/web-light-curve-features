@@ -2,6 +2,7 @@
 
 import sys
 import time
+from pprint import pprint
 from random import random
 
 import requests
@@ -21,7 +22,7 @@ def main():
     features = resp.json()
     t = 1e3 * (time.monotonic() - t)
     print(f'Requested in {t:.3f} ms')
-    print(features)
+    pprint(features)
 
 
 if __name__ == '__main__':
