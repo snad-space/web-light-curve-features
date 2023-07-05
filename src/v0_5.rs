@@ -86,7 +86,7 @@ thread_local! {
 
         let periodogram: Feature<f64> = {
             let mut periodogram = Periodogram::new(5);
-            periodogram.set_nyquist(NyquistFreq::fixed(24.0));
+            periodogram.set_nyquist(NyquistFreq::median());
             periodogram.set_freq_resolution(10.0);
             periodogram.set_max_freq_factor(2.0);
             periodogram.into()
