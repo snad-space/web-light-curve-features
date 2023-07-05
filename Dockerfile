@@ -9,7 +9,7 @@ COPY Cargo.lock /app/
 COPY src/*.rs /app/src/
 
 WORKDIR /app
-RUN cargo build --release
+RUN cargo build --release --locked
 
 #######################
 FROM debian:bookworm-slim
