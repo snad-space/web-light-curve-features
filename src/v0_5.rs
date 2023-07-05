@@ -126,13 +126,13 @@ thread_local! {
             inter_percentile_range_10,
             Kurtosis::new().into(),
             otsu_split,
-            periodogram.into(),
+            periodogram,
             reduced_chi2,
             skew,
             StetsonK::new().into(),
             WeightedMean::new().into(),
         ])
-        .into()
+
     };
 
     static FLUX_FE: FeatureExtractor<f64, Feature<f64>> =
@@ -177,7 +177,7 @@ thread_local! {
             bazin_fit,
             ExcessVariance::new().into(),
         ])
-        .into()};
+        };
 
     static FEATURE_NAMES: Vec<String> = {
         let magn_fe_names: Vec<String> = MAG_FE.with(|fe| fe.get_names().iter().map(|s| s.to_string()).collect());
