@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## [2023.6.0]
+
+### `light-curve-feature` v0.5.5
+
+- Add new versions of API for v0.5
+- Add new endpoint `/features` for custom JSON-serialized feature sets
+
 ### General
 
 - `ndarray` 0.15.4 -> 0.15.6
