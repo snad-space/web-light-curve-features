@@ -37,6 +37,27 @@ def get_custom_features(light_curve):
                         "AndersonDarlingNormal": {}
                     },
                     {
+                        "BazinFit":
+                            {
+                                "algorithm":
+                                     {
+                                         "Ceres":
+                                             {
+                                                "niterations": 10,
+                                                "loss_factor": None,
+                                             }
+                                     },
+                                "ln_prior":
+                                     {
+                                         "Fixed":
+                                             {
+                                                 "None":{}
+                                             }
+                                    },
+                                "inits_bounds":"Default"
+                            }
+                    },
+                    {
                         "BeyondNStd": {
                             "nstd": 1.0
                         }
