@@ -4,6 +4,7 @@ services:
      build: .
      networks:
        - proxy
+     mem_limit: 2g
      environment:
        VIRTUAL_HOST: features.lc.snad.space
        HTTPS_METHOD: noredirect
