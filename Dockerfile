@@ -24,6 +24,10 @@ ENV ROCKET_PROFILE=prod
 ENV ROCKET_ADDRESS=0.0.0.0
 ENV ROCKET_PORT=80
 ENV ROCKET_LOG_LEVEL=normal
+# Keep idle upstream connections open longer than nginx-proxy's keepalive so the
+# reverse proxy never reuses a connection Rocket already closed (avoids 502s).
+# Rocket's default keep_alive is 5s; raise it to match the gunicorn fix in ztf-web.
+ENV ROCKET_KEEP_ALIVE=75
 EXPOSE 80
 
 ENTRYPOINT ["/app"]
